@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: เครื่องประดับที่เหมาะกับคุณ</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .quiz-container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9; }
+        h2 { color: #333; }
+        .question { margin: 15px 0; font-weight: bold; }
+        .options label { display: block; margin: 5px 0; cursor: pointer; }
+        button { margin-top: 20px; padding: 10px 15px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #218838; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>🔮 เครื่องประดับที่เหมาะกับคุณ 🔮</h2>
+    
+    <div id="quiz">
+        <div class="question">1. สไตล์การแต่งตัวของคุณเป็นแบบไหน?</div>
+        <div class="options">
+            <label><input type="radio" name="q1" value="2"> หวานๆ น่ารัก</label>
+            <label><input type="radio" name="q1" value="4"> หรูหรา ดูแพง</label>
+            <label><input type="radio" name="q1" value="5"> เท่ๆ ลุยๆ</label>
+            <label><input type="radio" name="q1" value="3"> สนุกสนาน มีสีสัน</label>
+            <label><input type="radio" name="q1" value="1"> มินิมอล</label>
+            <label><input type="radio" name="q1" value="6"> เซ็กซี่</label>
+        </div>
+
+        <div class="question">2. คุณชอบทำอะไรในเวลาว่าง?</div>
+        <div class="options">
+            <label><input type="radio" name="q2" value="2"> อ่านนิยาย ดูซีรีส์</label>
+            <label><input type="radio" name="q2" value="4"> ไปคาเฟ่หรู</label>
+            <label><input type="radio" name="q2" value="5"> ออกกำลังกาย</label>
+            <label><input type="radio" name="q2" value="3"> ถ่ายรูปอัปโซเชียล</label>
+            <label><input type="radio" name="q2" value="1"> ฟังเพลงชิลๆ</label>
+            <label><input type="radio" name="q2" value="6"> ปาร์ตี้กับเพื่อน</label>
+        </div>
+
+        <button onclick="calculateResult()">🔍 ดูผลลัพธ์</button>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+function calculateResult() {
+    let totalScore = 0;
+    let answers = document.querySelectorAll("input[type='radio']:checked");
+
+    answers.forEach(answer => {
+        totalScore += parseInt(answer.value);
+    });
+
+    let resultText = "";
+    if (totalScore >= 5 && totalScore <= 9) {
+        resultText = "💎 สร้อยคอ - หรูหรา เพิ่มความโดดเด่นให้ลุค!";
+    } else if (totalScore >= 10 && totalScore <= 14) {
+        resultText = "✨ กำไล - สายแฟชั่นตัวจริง!";
+    } else if (totalScore >= 15 && totalScore <= 19) {
+        resultText = "💍 แหวน - บ่งบอกสไตล์แบบมีเอกลักษณ์!";
+    } else if (totalScore >= 20 && totalScore <= 24) {
+        resultText = "👂 ต่างหู - เพิ่มเสน่ห์ให้ใบหน้า!";
+    } else if (totalScore >= 25 && totalScore <= 29) {
+        resultText = "🩷 สร้อยเอว - สายเซ็กซี่ต้องมี!";
+    } else if (totalScore >= 30 && totalScore <= 34) {
+        resultText = "📌 เข็มกลัด - ดีเทลเล็กๆ ที่ทำให้ชุดดูแพง!";
+    } else if (totalScore >= 35) {
+        resultText = "🔑 พวงกุญแจ - น่ารัก พกพาติดตัวได้!";
+    } else {
+        resultText = "❌ กรุณาตอบทุกข้อ!";
+    }
+
+    document.getElementById("result").innerHTML = resultText;
+}
+</script>
+
+</body>
+</html>
